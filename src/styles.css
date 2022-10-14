@@ -5,12 +5,12 @@
   color: #444;
 }
 
-ul li a {
+a {
   text-decoration: none;
   color: #444;
   transition: 0.4s;
 }
 
-ul li a:hover {
+a:hover {
   color: #dec129;
 }
