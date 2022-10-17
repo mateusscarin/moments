@@ -1,1 +1,6 @@
-<p>Página Home!</p>
+<div class="home-container">
+  <h1>Veja o que estão compartilhando</h1>
+  <div *ngFor="let moment of moments">
+    <h2>{{ moment.title }}</h2>
+  </div>
+</div>
