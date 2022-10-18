@@ -22,4 +22,8 @@ export class MomentService {
   createMoment(moment: Moment): Observable<Moment> {
     return this.http.post<Moment>(`${this.baseApiUrl}/moment`, moment);
   }
+
+  getMoment(id: number): Observable<Response<Moment>> {
+    return this.http.get<Response<Moment>>(`${this.baseApiUrl}/moments/${id}`);
+  }
 }
