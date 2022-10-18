@@ -12,6 +12,9 @@ export class HomeComponent implements OnInit {
   allMoments: Moment[] = [];
   moments: Moment[] = [];
 
+  faSearch = faSearch;
+  searchTerm: string = '';
+
   constructor(private momentService: MomentService) {}
 
   ngOnInit(): void {
@@ -22,6 +25,15 @@ export class HomeComponent implements OnInit {
       });
       this.allMoments = items.body;
       this.moments = items.body;
+    });
+  }
+
+  search(e: Event): void {
+    const target = e.target as HTMLInputElement;
+    const value = target.value;
+
+    this.moments = this.allMoments.filter((moment) => {
+      return moment.title.toLowerCase().includes(value);
     });
   }
 }
