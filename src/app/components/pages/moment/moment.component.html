@@ -1,3 +1,17 @@
 <div class="moment" *ngIf="moment">
-  <p>{{ moment.title }}</p>
+  <h1>{{ moment.title }}</h1>
+  <img src="{{ moment.image }}" alt="{{ moment.title }}" />
+  <div class="about-moment">
+    <h3>Sobre este momento:</h3>
+    <p>{{ moment.description }}</p>
+  </div>
+  <div class="actions">
+    <h3>Ações:</h3>
+    <a href="moments/edit/{{ moment.id }}" class="edit-btn">
+      <fa-icon [icon]="faEdit"></fa-icon>Editar
+    </a>
+    <button class="remove-btn">
+      <fa-icon [icon]="faTimes"></fa-icon> Excluir
+    </button>
+  </div>
 </div>
