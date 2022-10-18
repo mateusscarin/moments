@@ -19,12 +19,12 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.momentService.getMoments().subscribe((items) => {
-      const data = items.body;
+      const data = items.body!;
       data.map((item) => {
         item.createdAt = new Date(item.createdAt!).toLocaleDateString('pt-BR');
       });
-      this.allMoments = items.body;
-      this.moments = items.body;
+      this.allMoments = items.body!;
+      this.moments = items.body!;
     });
   }
 
