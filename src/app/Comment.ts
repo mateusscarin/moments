@@ -1,8 +1,10 @@
-export interface Comment{
+import { Moment } from './Moment';
+
+export interface Comment {
   id?: number;
   text: string;
   username: string;
-  momentId: number;
-  created_at?: string;
-  updated_at?: string;
+  moment: Moment;
+  created_at?: Date | string;
+  updated_at?: Date | string;
 }

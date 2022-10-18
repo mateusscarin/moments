@@ -11,7 +11,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class MomentService {
-  private baseApiUrl = environment.baseApiUrl;
+  private baseApiUrl: string = environment.baseApiUrl;
 
   constructor(private http: HttpClient) {}
 
