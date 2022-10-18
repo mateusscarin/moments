@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Moment } from 'src/app/Moment';
+import { MessagesService } from 'src/app/services/messages.service';
 import { MomentService } from 'src/app/services/moment.service';
 
 @Component({
@@ -14,7 +15,9 @@ export class EditMomentComponent implements OnInit {
 
   constructor(
     private momentService: MomentService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router,
+    private messagesService: MessagesService
   ) {}
 
   ngOnInit(): void {
@@ -22,5 +25,12 @@ export class EditMomentComponent implements OnInit {
     this.momentService.getMoment(id).subscribe((response) => {
       this.moment = response.body!;
     });
+  }
+
+  async editHandler(moment: Moment) {
+    await this.momentService.updateMoment(moment).subscribe((response) => {
+      this.messagesService.add(response.messages[0]);
+    });
+    this.router.navigate(['/']);
   }
 }
