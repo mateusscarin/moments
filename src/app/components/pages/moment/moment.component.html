@@ -14,4 +14,38 @@
       <fa-icon [icon]="faTimes"></fa-icon> Excluir
     </button>
   </div>
+  <div class="comments">
+    <h3>
+      Comentários ({{
+        moment.comments!.length > 0 ? moment.comments!.length : 0
+      }})
+    </h3>
+    <div *ngIf="moment.comments!.length > 0; else noComments">
+      <div class="comment-container" *ngFor="let comment of moment.comments">
+        <p class="comment">{{ comment.text }}</p>
+        <p class="author"><span>por:</span>{{ comment.username }}</p>
+      </div>
+    </div>
+    <div class="comment-container">
+      <p class="comment">texto comentario</p>
+      <p class="author"><span>por:</span>author</p>
+    </div>
+    <ng-template #noComments>
+      <p>Não há comentários!</p>
+    </ng-template>
+  </div>
+  <div class="comment-form">
+    <h3>Deixe um comentário:</h3>
+    <form>
+      <div class="form-group">
+        <label for="text">Comentário:</label>
+        <textarea placeholder="O que você quer comentar?" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="username">Nome:</label>
+        <input type="text" placeholder="Digite o seu nome" required />
+      </div>
+      <input type="submit" value="Comentar!" />
+    </form>
+  </div>
 </div>
